@@ -6,16 +6,15 @@ import (
 )
 
 func main() {
+	// VARIAVEIS GLOBAIS
 	conferenceName := "Go Conference"
 	const conferenceTickets uint = 50
 	var remainingTickets uint = conferenceTickets
 	bookings := []string{}
 
 
-	//Mensagem inicial e contagem dos tickets disponiveis
-	fmt.Printf("Welcome to %v booking application!\n", conferenceName)
-	fmt.Printf("We have total of %v tickets and %v are still available\n", conferenceTickets, remainingTickets)
-
+	// Mensagem inicial   &&   Contagem dos tickets disponiveis
+	greetUsers(conferenceName, conferenceTickets, remainingTickets)
 
 	//For LOOP
 	for {
@@ -48,15 +47,8 @@ func main() {
 			fmt.Printf("Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 			fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 		
-			firstNames := []string{}
-			for _, bookingValue := range bookings {
-				var names = strings.Fields(bookingValue)
-				firstNames = append(firstNames, names[0])
-			}
-
-
-			// Lista de pessoas que compraram o ticket
-			fmt.Printf("Esses são os nomes dos que compraram nossos tickets: %v\n", firstNames)
+			// FUNÇÃO DE PRINTAR OS PRIMEIROS NOMES NUM ARRAY
+			printFirstNames(bookings)
 
 				if remainingTickets == 0 {
 				// fechar a aplicação
@@ -74,5 +66,22 @@ func main() {
 				fmt.Println("Your Ticket number is not valid.")
 			}
 		}
+	}
+}
+
+func greetUsers(confName string, confTickets, remTickets uint) {
+	fmt.Printf("Welcome to %v booking application\n", confName)
+	fmt.Printf("We have total of %v tickets and %v are still available\n", confTickets, remTickets)
+}
+
+
+
+func printFirstNames(bookings []string) {
+	firstNames := []string{}
+	for _, bookingValue := range bookings {
+		var names = strings.Fields(bookingValue)
+		firstNames = append(firstNames, names[0])
+
+		fmt.Printf("Esses são os nomes dos que compraram nossos tickets: %v\n", firstNames)
 	}
 }
