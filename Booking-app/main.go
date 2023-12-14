@@ -33,35 +33,33 @@ func main() {
 		fmt.Scan(&email)
 		fmt.Printf("How many tickets do you want?\n")
 		fmt.Scan(&userTickets)
-		if userTickets > remainingTickets {
-			fmt.Printf("Sorry, we only have %v tickets available.\n", remainingTickets)
-			continue 
-		}
+		if userTickets <= remainingTickets {
+			// Atualizar as variaveis: Tickets que sobraram; Array dos compradores
+			remainingTickets = remainingTickets - userTickets
+			bookings = append(bookings, firstName + " " + lastName)
+		
 
-		// Atualizar as variaveis: Tickets que sobraram; Array dos compradores
-		remainingTickets = remainingTickets - userTickets
-		bookings = append(bookings, firstName + " " + lastName)
-	
-		// Mensagem de Obrigado pela compra E quantos tickets sobraram após a mesma
-		fmt.Printf("Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
-		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
-	
-
-
-		firstNames := []string{}
-		for _, bookingValue := range bookings {
-			 var names = strings.Fields(bookingValue)
-			 firstNames = append(firstNames, names[0])
-		}
+			// Mensagem de Obrigado pela compra E quantos tickets sobraram após a mesma
+			fmt.Printf("Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
+			fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
+		
+			firstNames := []string{}
+			for _, bookingValue := range bookings {
+				var names = strings.Fields(bookingValue)
+				firstNames = append(firstNames, names[0])
+			}
 
 
-		// Lista de pessoas que compraram o ticket
-		fmt.Printf("Esses são os nomes dos que compraram nossos tickets: %v\n", firstNames)
+			// Lista de pessoas que compraram o ticket
+			fmt.Printf("Esses são os nomes dos que compraram nossos tickets: %v\n", firstNames)
 
-		if remainingTickets == 0 {
-			// fechar a aplicação
-			fmt.Printf("Our conference is booked out. Come back next year.")
-			break
+				if remainingTickets == 0 {
+				// fechar a aplicação
+				fmt.Printf("Our conference is booked out. Come back next year.")
+				break
+			}
+		} else {
+			fmt.Printf("Sorry, we only have %v tickets available. Please try again.\n", remainingTickets)
 		}
 	}
 }
