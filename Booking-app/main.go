@@ -18,7 +18,6 @@ func main() {
 	greetUsers( conferenceName, conferenceTickets, remainingTickets)
 
 	for {
-
 		// CAPTURA O INPUT DO USUÁRIO
 		firstName, lastName, email, userTickets := getUserInput()
 
@@ -35,8 +34,8 @@ func main() {
 			firstNames := getFirstNames()
 			fmt.Printf("A lista dos nomes é essa: %v\n", firstNames)
 
+			
 			if remainingTickets == 0 {
-			// fechar a aplicação
 				fmt.Printf("Our conference is booked out. Come back next year.")
 				break
 			}
