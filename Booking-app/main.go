@@ -98,7 +98,6 @@ func bookTicket(userTickets uint, firstName, lastName, email string) {
 	userData["firstName"] = firstName
 	userData["lastName"] = lastName
 	userData["email"] = email
-	userData["userTickets"] = string(userTickets)
 	
 
 	bookings = append(bookings, firstName + " " + lastName)
