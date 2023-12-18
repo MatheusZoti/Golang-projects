@@ -3,9 +3,10 @@ package main
 import (
 	"fmt"
 	"strings"
+	"booking-app/helper"
 )
 
-// VARIAVEIS GLOBAIS (PACKAGE LEVEL)
+// VARIAVEIS 'GLOBAIS' dentro desse package (PACKAGE LEVEL)
 const conferenceTickets uint = 50
 var conferenceName = "Go Conference"
 var remainingTickets uint = conferenceTickets
@@ -22,12 +23,12 @@ func main() {
 		firstName, lastName, email, userTickets := getUserInput()
 
 		// VALIDAÇÃO DO INPUT
-		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets)
+		isValidName, isValidEmail, isValidTicketNumber := helper.ValidateUserInput(firstName, lastName, email, userTickets)
 
 
 		if isValidEmail && isValidName && isValidTicketNumber {
 
-			// Atualizar as variaveis: Tickets que sobraram; Array dos compradores
+			// Atualizar as variaveis: 1- Tickets que sobraram; 2- Array dos compradores
 			bookTicket(userTickets, firstName, lastName, email)
 		
 			// FUNÇÃO DE PRINTAR OS PRIMEIROS NOMES NO ARRAY
@@ -68,15 +69,6 @@ func getFirstNames() []string {
 		firstNames = append(firstNames, names[0])
 	}
 	return firstNames
-}
-
-
-func validateUserInput(firstName, lastName, email string, userTickets uint) (bool, bool, bool) {
-	isValidName := len(firstName) >= 2 && len(lastName) >= 2
-	isValidEmail := strings.Contains(email, "@")
-	isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
-
-	return isValidName, isValidEmail, isValidTicketNumber
 }
 
 

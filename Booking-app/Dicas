@@ -1,0 +1,12 @@
+- Pacotes são um ou mais arquivos GO que possuem o mesmo 'package {nome}'
+
+- Quando se trabalha com Multiplos pacotes, organize eles em pastas diferentes.
+
+- Para usar uma função de um package tipo o "helper" pra main.go é preciso:
+  1- Importar: import "booking-app/helper"
+  2- colocar o helper.Função() na frente de toda vez q for usar a função.
+  3- O Nome da função PRECISA começar em maíusculo para ser exportado para outros lugares.
+      ex: validadeUser() => ValidateUser() 
+
+- Dá para exportar de um package pra outro as variáveis também. Basta nomea-las em maiusculo;
+  
