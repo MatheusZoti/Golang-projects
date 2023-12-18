@@ -3,13 +3,12 @@ package main
 import (
 	"fmt"
 	"strings"
-	"booking-app/helper"
 )
 
 // VARIAVEIS 'GLOBAIS' dentro desse package (PACKAGE LEVEL)
 const conferenceTickets uint = 50
 var conferenceName = "Go Conference"
-var remainingTickets uint = conferenceTickets
+var remainingTickets uint = 50
 var bookings = []string{}
 
 
@@ -23,7 +22,7 @@ func main() {
 		firstName, lastName, email, userTickets := getUserInput()
 
 		// VALIDAÇÃO DO INPUT
-		isValidName, isValidEmail, isValidTicketNumber := helper.ValidateUserInput(firstName, lastName, email, userTickets)
+		isValidName, isValidEmail, isValidTicketNumber := ValidateUserInput(firstName, lastName, email, userTickets, remainingTickets)
 
 
 		if isValidEmail && isValidName && isValidTicketNumber {
@@ -93,6 +92,15 @@ func getUserInput() (string, string, string, uint) {
 
 func bookTicket(userTickets uint, firstName, lastName, email string) {
 	remainingTickets = remainingTickets - userTickets
+
+	// Create a map for each user
+	var userData = make(map[string]string)
+	userData["firstName"] = firstName
+	userData["lastName"] = lastName
+	userData["email"] = email
+	userData["userTickets"] = string(userTickets)
+	
+
 	bookings = append(bookings, firstName + " " + lastName)
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
