@@ -34,8 +34,3 @@ Basicamente criando um novo Type chamado 'UserData'
 CRIANDO UMA LISTA DE STRUCTS
 var bookings = make([]UserData, 0)
 
-================= CONCURRENCY ==============================
-
-'go' na frente da função aplicada. Só isso já vai transformar a função numa thread nova e o código não precisará mais esperar ela.
-
-IMPORTE A PACKAGE 'Waitgroup' e aplique-a para fazer a função 'main()' esperar pela thread acabar !(image.png)
