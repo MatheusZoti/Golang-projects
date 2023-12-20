@@ -23,39 +23,36 @@ func main() {
 
 	greetUsers( conferenceName, conferenceTickets, remainingTickets)
 
-	for {
-		// CAPTURA O INPUT DO USUÁRIO
-		firstName, lastName, email, userTickets := getUserInput()
+	// CAPTURA O INPUT DO USUÁRIO
+	firstName, lastName, email, userTickets := getUserInput()
 
-		// VALIDAÇÃO DO INPUT
-		isValidName, isValidEmail, isValidTicketNumber := ValidateUserInput(firstName, lastName, email, userTickets, remainingTickets)
+	// VALIDAÇÃO DO INPUT
+	isValidName, isValidEmail, isValidTicketNumber := ValidateUserInput(firstName, lastName, email, userTickets, remainingTickets)
 
 
-		if isValidEmail && isValidName && isValidTicketNumber {
+	if isValidEmail && isValidName && isValidTicketNumber {
 
-			// Atualizar as variaveis: 1- Tickets que sobraram; 2- Array dos compradores
-			bookTicket(userTickets, firstName, lastName, email)
-			sendTicket(userTickets, firstName, lastName, email)
+		// Atualizar as variaveis: 1- Tickets que sobraram; 2- Array dos compradores
+		bookTicket(userTickets, firstName, lastName, email)
+		sendTicket(userTickets, firstName, lastName, email)
+	
+		// FUNÇÃO DE PRINTAR OS PRIMEIROS NOMES NO ARRAY
+		firstNames := getFirstNames()
+		fmt.Printf("A lista dos nomes é essa: %v\n", firstNames)
+
 		
-			// FUNÇÃO DE PRINTAR OS PRIMEIROS NOMES NO ARRAY
-			firstNames := getFirstNames()
-			fmt.Printf("A lista dos nomes é essa: %v\n", firstNames)
-
-			
-			if remainingTickets == 0 {
-				fmt.Printf("Our conference is booked out. Come back next year.")
-				break
-			}
-		} else {
-			if !isValidName {
-				fmt.Println("Your name is not valid.")
-			}
-			if !isValidEmail {
-				fmt.Println("Your email is not valid.")
-			}
-			if !isValidTicketNumber {
-				fmt.Println("Your Ticket number is not valid.")
-			}
+		if remainingTickets == 0 {
+			fmt.Printf("Our conference is booked out. Come back next year.")
+		}
+	} else {
+		if !isValidName {
+			fmt.Println("Your name is not valid.")
+		}
+		if !isValidEmail {
+			fmt.Println("Your email is not valid.")
+		}
+		if !isValidTicketNumber {
+			fmt.Println("Your Ticket number is not valid.")
 		}
 	}
 }
