@@ -23,4 +23,14 @@
     ----------------------STRUCT----------------------------
   É BASICAMENTE UM OBJETO DE JAVASCRIPT
 
-  
+Basicamente criando um novo Type chamado 'UserData'
+  type UserData struct {
+	firstName string
+	lastName string
+	email string
+	numberOfTickets uint
+}
+
+CRIANDO UMA LISTA DE STRUCTS
+var bookings = make([]UserData, 0)
+
