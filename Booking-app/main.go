@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"time"
+	"sync"
 )
 
 // VARIAVEIS 'GLOBAIS' dentro desse package (PACKAGE LEVEL)
@@ -18,6 +19,7 @@ type UserData struct {
 	numberOfTickets uint
 }
 
+var wg = sync.WaitGroup{}
 
 func main() {
 
@@ -34,7 +36,9 @@ func main() {
 
 		// Atualizar as variaveis: 1- Tickets que sobraram; 2- Array dos compradores
 		bookTicket(userTickets, firstName, lastName, email)
-		sendTicket(userTickets, firstName, lastName, email)
+
+		wg.Add(1)
+		go sendTicket(userTickets, firstName, lastName, email)
 	
 		// FUNÇÃO DE PRINTAR OS PRIMEIROS NOMES NO ARRAY
 		firstNames := getFirstNames()
@@ -55,6 +59,8 @@ func main() {
 			fmt.Println("Your Ticket number is not valid.")
 		}
 	}
+
+	wg.Wait()
 }
 
 
@@ -117,4 +123,6 @@ func sendTicket(userTickets uint, firstName, lastName, email string) {
 	fmt.Println("####################")
 	fmt.Printf("Sending ticket:/n %v to email address %v\n", ticket, email)
 	fmt.Println("####################")
+
+	wg.Done()
 }

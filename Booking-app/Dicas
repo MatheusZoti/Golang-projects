@@ -38,4 +38,10 @@ var bookings = make([]UserData, 0)
 
 'go' na frente da função aplicada. Só isso já vai transformar a função numa thread nova e o código não precisará mais esperar ela.
 
-IMPORTE A PACKAGE 'Waitgroup' e aplique-a para fazer a função 'main()' esperar pela thread acabar !(image.png)
+IMPORTE A PACKAGE 'sync' para usar o sync.Waitgroup{} e aplique-a para fazer a função 'main()' esperar pela thread acabar !(image.png)
+
+var wg = sync.Waitgroup{}
+
+wg.Add(1)   ==== [e o contador de concurrencys aplicadas no teu codigo]
+wg.Wait()   ==== Coloque antes de acabar a função main pra ela aguardar as theads
+wg.Done()   ==== Coloque no fim so código da função que será a thread
