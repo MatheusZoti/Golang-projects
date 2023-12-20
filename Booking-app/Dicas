@@ -10,8 +10,17 @@
 
 - Dá para exportar de um package pra outro as variáveis também. Basta nomea-las em maiusculo;
   
+
+  -------------------------MAPS-----------------------------
+  É BASICAMENTE UM OBJETO DE JAVASCRIPT, MAS SÓ PODE TER 1 TIPO DE VALOR (string, etc)
+
   - SINTAXE CRIAR MAPA - 
   	var nomeMapa = make(map[type-do-nome]type-do-valor)
 
   - SINTAXE CRIAR LISTA DE MAPAS - zero é o valor inicial da lista, pode ser 1 tbm pq ela cresce.
     var bookings = make([]map[string]string, 0)
+
+    ----------------------STRUCT----------------------------
+  É BASICAMENTE UM OBJETO DE JAVASCRIPT
+
+  
