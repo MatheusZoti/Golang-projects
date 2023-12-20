@@ -10,3 +10,5 @@
 
 - Dá para exportar de um package pra outro as variáveis também. Basta nomea-las em maiusculo;
   
+  - SINTAXE CRIAR MAPA - 
+  	var nomeMapa = make(map[type-do-nome]type-do-valor)
