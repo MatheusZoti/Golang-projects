@@ -3,14 +3,13 @@ package main
 import (
 	"fmt"
 	"strconv"
-	"strings"
 )
 
 // VARIAVEIS 'GLOBAIS' dentro desse package (PACKAGE LEVEL)
 const conferenceTickets uint = 50
 var conferenceName = "Go Conference"
 var remainingTickets uint = 50
-var bookings = []string{}
+var bookings = make([]map[string]string, 0)
 
 
 
@@ -65,8 +64,7 @@ func greetUsers(conferenceName string, conferenceTickets, remainingTickets uint)
 func getFirstNames() []string {
 	firstNames := []string{}
 	for _, bookingValue := range bookings {
-		var names = strings.Fields(bookingValue)
-		firstNames = append(firstNames, names[0])
+		firstNames = append(firstNames, bookingValue["firstName"])
 	}
 	return firstNames
 }
@@ -101,7 +99,8 @@ func bookTicket(userTickets uint, firstName, lastName, email string) {
 	userData["email"] = email
 	userData["userTickets"] = strconv.FormatUint(uint64(userTickets), 10)
 
-	bookings = append(bookings, firstName + " " + lastName)
+	bookings = append(bookings, userData)
+	fmt.Printf("List of bookings is %v\n", bookings)
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)

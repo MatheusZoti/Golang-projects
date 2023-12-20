@@ -12,3 +12,6 @@
   
   - SINTAXE CRIAR MAPA - 
   	var nomeMapa = make(map[type-do-nome]type-do-valor)
+
+  - SINTAXE CRIAR LISTA DE MAPAS - zero é o valor inicial da lista, pode ser 1 tbm pq ela cresce.
+    var bookings = make([]map[string]string, 0)
