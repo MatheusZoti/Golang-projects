@@ -35,8 +35,8 @@ func main() {
 
 			// Atualizar as variaveis: 1- Tickets que sobraram; 2- Array dos compradores
 			bookTicket(userTickets, firstName, lastName, email)
-			sendTicket(userTickets, firstName, lastName, email)
-		
+			go sendTicket(userTickets, firstName, lastName, email)
+		  
 			// FUNÇÃO DE PRINTAR OS PRIMEIROS NOMES NO ARRAY
 			firstNames := getFirstNames()
 			fmt.Printf("A lista dos nomes é essa: %v\n", firstNames)
