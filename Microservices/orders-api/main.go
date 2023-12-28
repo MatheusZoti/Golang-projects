@@ -8,9 +8,13 @@ import (
 )
 
 func main() {
+	router := chi.NewRouter()
+
+	router.Get("/hello", basicHandler)
+
 	server := &http.Server{
 		Addr: ":3000",
-		Handler: http.HandlerFunc(basicHandler),
+		Handler: router,
 
 	}
 	err := server.ListenAndServe()
@@ -21,13 +25,5 @@ func main() {
 
 
 func basicHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodGet {
-		// Handle GET
-		if r.URL.Path == "/foo" {
-			// Handle GET foo
-		}
-	}
-	if r.Method == http.MethodPost {
-		// Handle POST
-	}
+	fmt.Println("Hello World")
 }
